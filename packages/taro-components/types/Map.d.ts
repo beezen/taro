@@ -30,8 +30,9 @@ interface MapProps extends StandardProps {
    * @supported weapp, alipay, swan, tt, qq, jd
    */
   markers?: MapProps.marker[]
-  /** 标记点
+  /** **即将移除，请使用 markers**
    * @supported weapp
+   * @deprecated
    */
   covers?: any[]
   /** 路线
@@ -220,11 +221,11 @@ interface MapProps extends StandardProps {
   /** 点击标记点对应的气泡时触发e.detail = {markerId}
    * @supported weapp, swan, tt, jd
    */
-  onCallOutTap?: CommonEventFunction
+  onCallOutTap?: CommonEventFunction<MapProps.onCalloutTapEventDetail>
   /** 点击定位标时触发，e.detail = {longitude, latitude}
    * @supported weapp, tt
    */
-  onAnchorPointTap?: CommonEventFunction
+  onAnchorPointTap?: CommonEventFunction<MapProps.point>
   /** 点击 panel 时触发。
    * @supported alipay
    */
@@ -611,6 +612,22 @@ declare namespace MapProps {
     name: string
     longitude: number
     latitude: number
+  }
+  interface onPolylineTapEventDetail {
+    polylineId: number
+    longitude: number
+    latitude: number
+  }
+  interface onAbilityEventDetail {
+    ability: string
+    errCode: number
+    errMsg: string
+  }
+  interface onInterpolatePointEventDetail {
+    markerId: number
+    longitude: number
+    latitude: number
+    animationStatus: 'interpolating' | 'complete'
   }
 }
 /** 地图。相关api Taro.createMapContext。
