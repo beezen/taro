@@ -6,7 +6,7 @@ interface PickerViewProps extends StandardProps {
    */
   value?: number[]
   /** 设置 React 非受控状态下的初始取值
-   * @supported weapp, alipay, swan, tt, qq, jd, rn
+   * @supported rn, weapp, alipay, swan, tt, qq, jd, rn
    * @unique
    */
   defaultValue?: number[]
